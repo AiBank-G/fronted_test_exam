@@ -1,7 +1,7 @@
 # Aibank前端面试题
 
 
-* 使用 ``VUE`` 或 ``React`` 实现 [api 文档页面](https://huobiapi.github.io/docs/spot/v1/cn/#185368440e)
+* 使用 ``VUE`` 或 ``React`` 实现 [api 文档页面](https://huobiapi.github.io/docs/spot/v1/cn/#9d97b30872)
 > 页面由以下三部分组成
 
   * 菜单
