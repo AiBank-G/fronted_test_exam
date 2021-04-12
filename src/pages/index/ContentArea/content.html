@@ -1,0 +1,2188 @@
+<h1 id="185368440e" data-label="update_logs">更新日志</h1>
+<style>
+  table {
+    max-width: 100%;
+  }
+  table th {
+    white-space: nowrap; /*表头内容强制在一行显示*/
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>生效时间<br />(UTC +8)</th>
+      <th>接口</th>
+      <th>变化</th>
+      <th>摘要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2021.3.1</td>
+      <td><code>POST /v2/sub-user/deduct-mode</code></td>
+      <td>新增</td>
+      <td>新增“设置母子用户手续费抵扣（HT或点卡）”接口</td>
+    </tr>
+    <tr>
+      <td>2021.3.1</td>
+      <td><code>GET /v2/sub-user/account-list</code></td>
+      <td>优化</td>
+      <td>新增“母子用户手续费抵扣”参数</td>
+    </tr>
+    <tr>
+      <td>2021.2.28</td>
+      <td>Account and order Websocket v1</td>
+      <td>删除</td>
+      <td>资产和订单WebSocket v1接口关闭</td>
+    </tr>
+    <tr>
+      <td>2021.2.1</td>
+      <td><code>POST /v2/account/repayment</code></td>
+      <td>优化</td>
+      <td>通用还币接口支持逐仓杠杆还币</td>
+    </tr>
+    <tr>
+      <td>2021.1.19 19:00</td>
+      <td><code>GET /v1/order/matchresults</code></td>
+      <td>优化</td>
+      <td>增加start-time/end-time参数，支持用户指定“时间范围“查询订单</td>
+    </tr>
+    <tr>
+      <td>2021.1.19 19:00</td>
+      <td><code>GET /v2/etp/limit</code></td>
+      <td>新增</td>
+      <td>新增ETP持仓限额接口</td>
+    </tr>
+    <tr>
+      <td>2021.1.5 19:00</td>
+      <td><code>POST/v2/algo-orders/cancel-all-after</code></td>
+      <td>新增</td>
+      <td>新增自动撤单接口</td>
+    </tr>
+    <tr>
+      <td>2021.1.5 19:00</td>
+      <td>accounts.update#${mode}</td>
+      <td>优化</td>
+      <td>
+        增加mode=2：
+        <br />accounts.update#2<br />在账户余额发生变动或可用余额发生变动时均推送且一起推送。
+      </td>
+    </tr>
+    <tr>
+      <td>2020.12.16 19:00</td>
+      <td>
+        <code>GET /v1/order/matchresults</code>,<br /><code
+          >GET /v1/order/orders/{order-id}/matchresults</code
+        >
+      </td>
+      <td>优化</td>
+      <td>
+        新增参数抵扣状态：fee-deduct-state（ 抵扣中：ongoing/
+        抵扣完成：done），来代表手续费抵扣中和抵扣完成的状态
+      </td>
+    </tr>
+    <tr>
+      <td>2020.12.14 19:00</td>
+      <td>
+        <code>POST /v2/etp/{transactId}/cancel</code> <br />
+        <code>POST /v2/etp/batch-cancel</code>
+      </td>
+      <td>新增</td>
+      <td>新增杠杆ETP单个撤单接口和杠杆ETP批量撤单接口</td>
+    </tr>
+    <tr>
+      <td>2020.11.26 19:00</td>
+      <td><code>GET /v2/user/uid</code></td>
+      <td>新增</td>
+      <td>新增获取用户UID接口</td>
+    </tr>
+    <tr>
+      <td>2020.10.16 19:00</td>
+      <td><code>orders#${symbol}</code></td>
+      <td>优化</td>
+      <td>订单创建事件新增accountId</td>
+    </tr>
+    <tr>
+      <td>2020.10.10 19:00</td>
+      <td><code>POST /v2/account/repayment</code>,<br /><code>GET /v2/account/repayment</code></td>
+      <td>新增</td>
+      <td>新增通用还币接口及还币交易记录查询接口</td>
+    </tr>
+    <tr>
+      <td>2020.8.28 19:00</td>
+      <td><code>GET /v1/common/symbols</code></td>
+      <td>优化</td>
+      <td>新增API交易使能标记</td>
+    </tr>
+    <tr>
+      <td>2020.8.21 19:00</td>
+      <td><code>accounts.update#${mode}</code>, <br /><code>accounts</code></td>
+      <td>优化</td>
+      <td>新增账户变更事件类型deposit，withdraw</td>
+    </tr>
+    <tr>
+      <td>2020.8.11 19:00</td>
+      <td>
+        <code>GET /v1/common/symbols</code>,<br />
+        <code>GET /market/etp</code>, <br /><code>market.$symbol.etp</code>,<br />
+        <code>GET /market/history/kline</code>, <br /><code>market.$symbol$.kline.$period$</code
+        >,<br />
+        <code>GET /v2/etp/reference</code>, <br /><code>POST /v2/etp/creation</code>,<br />
+        <code>POST /v2/etp/redemption</code>,<br />
+        <code>GET /v2/etp/transactions</code>,<br />
+        <code>GET /v2/etp/transaction</code>, <br /><code>GET /v2/etp/rebalance</code>
+      </td>
+      <td>新增+优化</td>
+      <td>新增/优化相关接口支持杠杆ETP</td>
+    </tr>
+    <tr>
+      <td>2020.8.10 19:00</td>
+      <td>
+        <code>GET v1/stable-coin/quote</code>, <br /><code>POST v1/stable-coin/exchange</code>
+      </td>
+      <td>优化</td>
+      <td>新增稳定币兑换手续费字段</td>
+    </tr>
+    <tr>
+      <td>2020.8.4 19:00</td>
+      <td><code>GET /v1/account/history</code></td>
+      <td>优化</td>
+      <td>新增返回字段“next-id”</td>
+    </tr>
+    <tr>
+      <td>2020.8.3 19:00</td>
+      <td>
+        <code>POST /v2/algo-orders</code>, <br /><code>GET /v2/algo-orders/opening</code>,
+        <br /><code>GET /v2/algo-orders/history</code>, <br /><code
+          >GET /v2/algo-orders/specific</code
+        >
+      </td>
+      <td>优化</td>
+      <td>新增追踪委托</td>
+    </tr>
+    <tr>
+      <td>2020.7.24 19:00</td>
+      <td><code>trade.clearing#${symbol}#${mode}</code></td>
+      <td>优化</td>
+      <td>新增撤单推送</td>
+    </tr>
+    <tr>
+      <td>2020.7.17 19:00</td>
+      <td><code>GET /v2/account/asset-valuation</code></td>
+      <td>新增</td>
+      <td>新增账户资产估值查询节点</td>
+    </tr>
+    <tr>
+      <td>2020.7.16 19:00</td>
+      <td><code>GET /v1/common/symbols</code></td>
+      <td>优化</td>
+      <td>新增返回字段</td>
+    </tr>
+    <tr>
+      <td>2020.7.10 19:00</td>
+      <td>
+        <code>GET /v2/point/account</code>,<br />
+        <code>POST /v2/point/transfer</code>
+      </td>
+      <td>新增</td>
+      <td>新增点卡余额查询节点及点卡划转节点</td>
+    </tr>
+    <tr>
+      <td>2020.7.10 19:00</td>
+      <td><code>POST /v1/order/batch-orders</code></td>
+      <td>优化</td>
+      <td>限频值调整</td>
+    </tr>
+    <tr>
+      <td>2020.7.8 19:00</td>
+      <td><code>orders#{symbol}</code></td>
+      <td>优化</td>
+      <td>新增两个事件类型</td>
+    </tr>
+    <tr>
+      <td>2020.6.27 19:00</td>
+      <td><code>GET /v2/market-status</code></td>
+      <td>新增</td>
+      <td>新增市场状态查询节点</td>
+    </tr>
+    <tr>
+      <td>2020.6.27 19:00</td>
+      <td><code>market.$symbol.mbp.$levels</code></td>
+      <td>优化</td>
+      <td>新增五档MBP逐笔增量订阅</td>
+    </tr>
+    <tr>
+      <td>2020.6.27 19:00</td>
+      <td>若干新增节点</td>
+      <td>新增</td>
+      <td>新增策略委托相关节点</td>
+    </tr>
+    <tr>
+      <td>2020.6.24 19:00</td>
+      <td>
+        <code>GET /v1/order/orders/{order-id}/matchresults</code> <br />
+        <code>GET /v1/order/matchresults</code>
+      </td>
+      <td>优化</td>
+      <td>增加fee-currency字段</td>
+    </tr>
+    <tr>
+      <td>2020.6.24 19:00</td>
+      <td><code>GET /v2/account/withdraw/address</code></td>
+      <td>新增</td>
+      <td>提币地址查询</td>
+    </tr>
+    <tr>
+      <td>2020.6.23 19:00</td>
+      <td>若干新增节点</td>
+      <td>新增</td>
+      <td>新增C2C杠借币相关节点</td>
+    </tr>
+    <tr>
+      <td>2020.6.16 10:00</td>
+      <td>
+        <code>GET /v2/sub-user/user-list</code>,<br />
+        <code>GET /v2/sub-user/user-state</code>, <br /><code>GET /v2/sub-user/account-list</code>
+      </td>
+      <td>新增</td>
+      <td>新增子用户列表查询、子用户状态查询、子用户账户查询接口</td>
+    </tr>
+    <tr>
+      <td>2020.6.15 19:00</td>
+      <td>
+        <code>POST /v2/sub-user/api-key-generation</code>,<br /><code
+          >POST /v2/sub-user/api-key-modification</code
+        >
+      </td>
+      <td>优化</td>
+      <td>增加单用户可创建API Key数量以及增加单个API Key可绑定IP地址数量</td>
+    </tr>
+    <tr>
+      <td>2020.6.11 19:00</td>
+      <td><code>POST /v1/account/transfer</code></td>
+      <td>优化</td>
+      <td>新增币币账户与逐仓杠杠账户的划转，逐仓杠杠账户内部的划转</td>
+    </tr>
+    <tr>
+      <td>2020.6.11 19:00</td>
+      <td><code>GET /v1/query/deposit-withdraw</code></td>
+      <td>优化</td>
+      <td>新增返回提币失败原因</td>
+    </tr>
+    <tr>
+      <td>2020.6.5 19:00</td>
+      <td>
+        <code>POST /v2/sub-user/api-key-generation</code>,<br />
+        <code>GET /v2/user/api-key</code>, <br /><code>POST /v2/sub-user/api-key-modification</code
+        >,<br />
+        <code>POST /v2/sub-user/api-key-deletion</code>
+      </td>
+      <td>新增</td>
+      <td>新增母子用户API key管理接口</td>
+    </tr>
+    <tr>
+      <td>2020.6.4 19:00</td>
+      <td>若干私有REST接口</td>
+      <td>优化</td>
+      <td>变更限频值</td>
+    </tr>
+    <tr>
+      <td>2020.6.1 19:00</td>
+      <td><code>orders#${symbol}</code></td>
+      <td>优化</td>
+      <td>Taker订单成交前首推创建事件</td>
+    </tr>
+    <tr>
+      <td>2020.6.1 19:00</td>
+      <td>
+        <code>GET /v2/reference/transact-fee-rate</code>, <br /><code
+          >GET /v1/order/orders/{order-id}/matchresults</code
+        >,<br />
+        <code>GET /v1/order/matchresults</code>, <br /><code>trade.clearing#${symbol}</code>,
+        <br /><code>GET /v1/account/history</code>, <br /><code>accounts</code>,
+        <code>accounts.update#${mode}</code>
+      </td>
+      <td>优化</td>
+      <td>支持交易手续费返佣相关字段</td>
+    </tr>
+    <tr>
+      <td>2020.5.29 19:00</td>
+      <td><code>POST /v2/sub-user/tradable-market</code></td>
+      <td>新增</td>
+      <td>新增母用户设置子用户交易权限接口</td>
+    </tr>
+    <tr>
+      <td>2020.5.29 19:00</td>
+      <td><code>POST /v2/sub-user/transferability</code></td>
+      <td>新增</td>
+      <td>新增母用户设置子用户资产转出权限接口</td>
+    </tr>
+    <tr>
+      <td>2020.5.29 19:00</td>
+      <td><code>POST /v2/sub-user/creation</code></td>
+      <td>新增</td>
+      <td>新增子用户创建接口</td>
+    </tr>
+    <tr>
+      <td>2020.5.29 19:00</td>
+      <td><code>POST /v1/account/transfer</code></td>
+      <td>新增</td>
+      <td>新增通用资产划转接口</td>
+    </tr>
+    <tr>
+      <td>2020.4.28 11:00</td>
+      <td>
+        <code>market.$symbol.mbp.$levels</code> &amp;
+        <code>market.$symbol.mbp.refresh.$levels</code>
+      </td>
+      <td>优化</td>
+      <td>支持所有交易对</td>
+    </tr>
+    <tr>
+      <td>2020.4.27 11:00</td>
+      <td><code>orders#${symbol}</code></td>
+      <td>优化</td>
+      <td>更改IOC订单的更新行为</td>
+    </tr>
+    <tr>
+      <td>2020.4.17 11:00</td>
+      <td>
+        <code>GET /v2/account/deposit/address</code>,<br /><code
+          >GET /v2/sub-user/deposit-address</code
+        >,<br /><code>GET /v1/query/deposit-withdraw</code>,<br /><code
+          >GET /v2/sub-user/query-deposit</code
+        >
+      </td>
+      <td>新增</td>
+      <td>支持子用户充值</td>
+    </tr>
+    <tr>
+      <td>2020.4.3 11:00</td>
+      <td><code>orders#${symbol}</code></td>
+      <td>新增</td>
+      <td>新增v2版本订单更新推送主题</td>
+    </tr>
+    <tr>
+      <td>2020.3.31 21:00</td>
+      <td><code>accounts.update#${mode}</code></td>
+      <td>优化</td>
+      <td>订阅成功后首推各账户初始值</td>
+    </tr>
+    <tr>
+      <td>2020.3.31 11:00</td>
+      <td><code>GET /v2/account/ledger</code></td>
+      <td>新增</td>
+      <td>新增财务流水查询接口</td>
+    </tr>
+    <tr>
+      <td>2020.3.30 19:00</td>
+      <td><code>market.$symbol.mbp.refresh.$levels</code></td>
+      <td>新增</td>
+      <td>新增MBP全量推送接口</td>
+    </tr>
+    <tr>
+      <td>2020.3.30 19:00</td>
+      <td>
+        <code>POST /v1/order/orders/place</code>,<br /><code>POST /v1/order/batch-orders</code
+        >,<br /><code>GET /v1/order/openOrders</code>,<br /><code
+          >GET /v1/order/orders/{order-id}</code
+        >,<br /><code>GET /v1/order/orders/getClientOrder</code>,<br /><code
+          >GET /v1/order/orders/</code
+        ><br /><code>{order-id}/matchresults</code>,<br /><code>GET /v1/order/orders</code
+        >,<br /><code>GET /v1/order/history</code>,<br /><code>GET /v1/order/matchresults</code
+        >,<br /><code>orders.$symbol</code>,<br /><code>trade.clearing#${symbol}</code>,<br /><code
+          >orders.$symbol.update</code
+        >
+      </td>
+      <td>优化</td>
+      <td>增加FOK订单类型</td>
+    </tr>
+    <tr>
+      <td>2020.3.27 19:00</td>
+      <td><code>GET /v1/order/orders</code><br /><code>GET /v1/order/history</code></td>
+      <td>优化</td>
+      <td>已完全撤销订单的可查询范围缩短为2小时</td>
+    </tr>
+    <tr>
+      <td>2020.3.24 19:00</td>
+      <td><code>market.$symbol.mbp.$levels</code></td>
+      <td>优化</td>
+      <td>增加可请求交易代码</td>
+    </tr>
+    <tr>
+      <td>2020.3.17 19:00</td>
+      <td><code>GET /v1/order/matchresults</code></td>
+      <td>优化</td>
+      <td>size取值上限由100上调至500</td>
+    </tr>
+    <tr>
+      <td>2020.3.12 19:00</td>
+      <td><code>GET /market/tickers</code></td>
+      <td>优化</td>
+      <td>增加买一卖一字段</td>
+    </tr>
+    <tr>
+      <td>2020.3.5 19:00</td>
+      <td><code>GET /v1/fee/fee-rate/get</code></td>
+      <td>删除</td>
+      <td>移除旧版费率查询接口</td>
+    </tr>
+    <tr>
+      <td>2020.3.2 11:00</td>
+      <td><code>GET https://status.huobigroup.com</code><br /><code>/api/v2/summary.json</code></td>
+      <td>新增</td>
+      <td>新增获取当前系统状态接口</td>
+    </tr>
+    <tr>
+      <td>2020.2.28 11:00</td>
+      <td>母子用户相关接口</td>
+      <td>优化</td>
+      <td>将文档中“母子账号”的称谓更改为“母子用户”</td>
+    </tr>
+    <tr>
+      <td>2020.2.28 11:00</td>
+      <td>
+        <code>GET /v1/cross-margin/loan-orders</code>,<br /><code
+          >GET /v1/cross-margin/accounts/balance</code
+        >
+      </td>
+      <td>优化</td>
+      <td>新增可选请求参数</td>
+    </tr>
+    <tr>
+      <td>2020.2.28 11:00</td>
+      <td>
+        <code>GET /v1/subuser/aggregate-balance</code>,<br /><code
+          >GET /v1/account/accounts/{sub-uid}</code
+        >
+      </td>
+      <td>优化</td>
+      <td>新增账户类型字段枚举值</td>
+    </tr>
+    <tr>
+      <td>2020.2.28 11:00</td>
+      <td>
+        <code>POST /v1/cross-margin/transfer-in</code>,<br /><code
+          >POST /v1/cross-margin/transfer-out</code
+        >,<br /><code>GET /v1/cross-margin/loan-info</code>,<br /><code
+          >POST /v1/cross-margin/orders</code
+        >,<br /><code>POST /v1/cross-margin/orders/</code><br /><code>{order-id}/repay</code
+        >,<br /><code>GET /v1/cross-margin/loan-orders</code>,<br /><code
+          >GET /v1/cross-margin/accounts/balance</code
+        >
+      </td>
+      <td>优化</td>
+      <td>允许授权子用户调用该接口</td>
+    </tr>
+    <tr>
+      <td>2020.2.5 19:00</td>
+      <td>
+        <code>GET /v1/order/orders/{order-id}</code>,<br /><code
+          >GET /v1/order/orders/getClientOrder</code
+        >,<br /><code>GET /v1/order/openOrders</code>,<br /><code>GET /v1/order/orders</code
+        >,<br /><code>GET /v1/order/history</code>
+      </td>
+      <td>优化</td>
+      <td>新增client-order-id字段</td>
+    </tr>
+    <tr>
+      <td>2020.2.5 19:00</td>
+      <td><code>GET /v1/order/orders</code></td>
+      <td>优化</td>
+      <td>新增start-time/end-time请求参数</td>
+    </tr>
+    <tr>
+      <td>2020.2.3 19:00</td>
+      <td><code>GET /v2/reference/transact-fee-rate</code></td>
+      <td>新增</td>
+      <td>新增交易手续费率查询节点</td>
+    </tr>
+    <tr>
+      <td>2020.2.3 19:00</td>
+      <td><code>GET /v2/reference/currencies</code></td>
+      <td>优化</td>
+      <td>增加底层链字段</td>
+    </tr>
+    <tr>
+      <td>2020.2.3 19:00</td>
+      <td><code>GET /v1/margin/loan-info</code></td>
+      <td>优化</td>
+      <td>增加抵扣后实际币息率字段</td>
+    </tr>
+    <tr>
+      <td>2020.1.10 19:00</td>
+      <td><code>GET /v1/cross-margin/loan-info</code></td>
+      <td>优化</td>
+      <td>增加抵扣后实际币息率字段</td>
+    </tr>
+    <tr>
+      <td>2020.1.7 19:00</td>
+      <td><code>GET /v1/account/history</code></td>
+      <td>优化</td>
+      <td>允许子用户调用此节点</td>
+    </tr>
+    <tr>
+      <td>2019.12.27 19:00</td>
+      <td><code>POST /v2/sub-user/management</code></td>
+      <td>新增</td>
+      <td>新增冻结/解冻子用户接口</td>
+    </tr>
+    <tr>
+      <td>2019.12.27 19:00</td>
+      <td><code>POST /v1/order/orders/batchcancel</code></td>
+      <td>优化</td>
+      <td>允许以client order ID为请求参数批量撤单</td>
+    </tr>
+    <tr>
+      <td>2019.12.27 19:00</td>
+      <td><code>POST /v1/order/batch-orders</code></td>
+      <td>新增</td>
+      <td>新增批量下单节点</td>
+    </tr>
+    <tr>
+      <td>2019.12.23 15:00</td>
+      <td><code>market.$symbol.mbp.$levels</code></td>
+      <td>新增</td>
+      <td>新增深度行情增量推送订阅主题</td>
+    </tr>
+    <tr>
+      <td>2019.12.05 11:00</td>
+      <td><code>trade.clearing#${symbol}</code> &amp; <code>accounts.update#${mode}</code></td>
+      <td>新增</td>
+      <td>新增v2版本资产及订单推送订阅主题</td>
+    </tr>
+    <tr>
+      <td>2019.11.22 15:00</td>
+      <td><code>GET /v1/order/orders</code><br /><code>GET /v1/order/history</code></td>
+      <td>优化</td>
+      <td>已完全撤销的历史订单可查询时间范围缩短为最近1天</td>
+    </tr>
+    <tr>
+      <td>2019.11.13 19:00</td>
+      <td>
+        <code>GET /v1/margin/loan-info</code><br /><code>GET /v1/cross-margin/loan-info</code>
+      </td>
+      <td>新增</td>
+      <td>新增借币币息及额度查询节点</td>
+    </tr>
+    <tr>
+      <td>2019.11.08 19:45</td>
+      <td>
+        <code>GET /v1/order/orders/{order-id}/matchresult</code><br /><code
+          >GET /v1/order/matchresults</code
+        >
+      </td>
+      <td>新增</td>
+      <td>新增返回字段trade-id</td>
+    </tr>
+    <tr>
+      <td>2019.10.18 19:00</td>
+      <td><code>GET /v1/account/history</code></td>
+      <td>新增</td>
+      <td>新增账户流水查询节点</td>
+    </tr>
+    <tr>
+      <td>2019.10.12 11:00</td>
+      <td><code>POST /v1/dw/withdraw/api/create</code></td>
+      <td>优化</td>
+      <td>设置ERC20为USDT的默认链</td>
+    </tr>
+    <tr>
+      <td>2019.10.11 10:00</td>
+      <td>支持全仓杠杆资产划转、借币、还币、查询借币订单、查询账户余额等相关节点</td>
+      <td>新增</td>
+      <td>新增全仓杠杆相关节点</td>
+    </tr>
+    <tr>
+      <td>2019.10.09 20:00</td>
+      <td>
+        <code>GET /market/trade</code><br /><code>GET /market/history/trade</code><br /><code
+          >market.$symbol.trade.detail</code
+        >
+      </td>
+      <td>优化</td>
+      <td>新增返回字段trade id</td>
+    </tr>
+    <tr>
+      <td>2019.09.25 20:00</td>
+      <td><code>GET /v2/account/withdraw/quota</code></td>
+      <td>新增</td>
+      <td>新增提币额度查询节点</td>
+    </tr>
+    <tr>
+      <td>2019.09.23 15:00</td>
+      <td>
+        <code>POST /v1/order/orders/</code><br /><code>{order-id}/submitcancel</code> <br /><code
+          >POST /v1/order/orders/batchcancel</code
+        >
+      </td>
+      <td>优化</td>
+      <td>优化错误码返回</td>
+    </tr>
+    <tr>
+      <td>2019.09.20 10:00</td>
+      <td><code>GET /v2/reference/currencies</code></td>
+      <td>新增</td>
+      <td>新增币链参考信息节点</td>
+    </tr>
+    <tr>
+      <td>2019.09.19 16:00</td>
+      <td><code>market.$symbol.bbo</code></td>
+      <td>新增</td>
+      <td>新增买一卖一逐笔推送</td>
+    </tr>
+    <tr>
+      <td>2019.09.18 20:00</td>
+      <td>
+        <code>GET /v1/subuser/aggregate-balance</code><br /><code
+          >GET /v1/account/accounts/{sub-uid}</code
+        ><br /><code>GET /v1/margin/loan-orders</code><br /><code
+          >GET /v1/margin/accounts/balance</code
+        >
+      </td>
+      <td>新增</td>
+      <td>支持子用户逐仓杠杆交易</td>
+    </tr>
+    <tr>
+      <td>2019.09.16 15:00</td>
+      <td><code>GET /v2/account/deposit/address</code></td>
+      <td>新增</td>
+      <td>新增APIv2节点 - 充币地址查询</td>
+    </tr>
+    <tr>
+      <td>2019.09.11 17:00</td>
+      <td>
+        <code>GET /v1/stable-coin/quote</code><br /><code>POST /v1/stable-coin/exchange</code>
+      </td>
+      <td>新增</td>
+      <td>新增稳定币兑换节点</td>
+    </tr>
+    <tr>
+      <td>2019.09.11 16:00</td>
+      <td>删除部分代码示例</td>
+      <td>删除</td>
+      <td>删除部分代码示例</td>
+    </tr>
+    <tr>
+      <td>2019.09.10 10:00</td>
+      <td>
+        除了<code>POST /v1/order/orders/submitCancelClientOrder</code> <br />
+        <code>GET /v1/order/openOrders</code><br />之外其他订单相关API
+      </td>
+      <td>修改</td>
+      <td>
+        除节点"POST /v1/order/orders/submitCancelClientOrder" &amp; "GET
+        /v1/order/openOrders"以外，去除了其它节点中订单状态取值submitting以及cancelling
+      </td>
+    </tr>
+    <tr>
+      <td>2019.09.09 11:00</td>
+      <td><code>POST /v1/order/orders/submitCancelClientOrder</code></td>
+      <td>修改</td>
+      <td>修改返回数据描述</td>
+    </tr>
+    <tr>
+      <td>2019.09.09 10:00</td>
+      <td><code>GET /v1/order/orders</code><br /><code>GET /v1/order/matchresults</code></td>
+      <td>修改</td>
+      <td>修改请求字段start-date与end-date的默认值及取值范围的描述</td>
+    </tr>
+    <tr>
+      <td>2019.09.02 18:00</td>
+      <td><code>POST /v1/order/orders/batchCancelOpenOrders</code></td>
+      <td>优化</td>
+      <td>更改请求字段"symbol"的描述</td>
+    </tr>
+    <tr>
+      <td>2019.09.02 16:00</td>
+      <td>删除稳定币兑换相关节点。</td>
+      <td>删除</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2019.08.29 21:00</td>
+      <td>下单、查询、订阅接口</td>
+      <td>新增</td>
+      <td>支持止盈止损订单类型。</td>
+    </tr>
+    <tr>
+      <td>2019.08.21 18:00</td>
+      <td><code>GET /v1/order/openOrders</code></td>
+      <td>优化</td>
+      <td>修改请求字段列表。</td>
+    </tr>
+    <tr>
+      <td>2019.08.05 18:00</td>
+      <td><code>orders.$symbol.update</code></td>
+      <td>新增</td>
+      <td>新增字段"client-order-id"和"order-type"。</td>
+    </tr>
+    <tr>
+      <td>2019.08.02 18:00</td>
+      <td><code>orders.$symbol.update</code></td>
+      <td>优化</td>
+      <td>修改对字段"unfilled-amount"的描述。</td>
+    </tr>
+    <tr>
+      <td>2019.07.23 21:00</td>
+      <td>
+        <code>GET /v1/order/orders/{order-id}/matchresult</code><br /><code
+          >GET /v1/order/matchresults</code
+        >
+      </td>
+      <td>新增</td>
+      <td>新增手续费抵扣详情字段。</td>
+    </tr>
+    <tr>
+      <td>2019.07.23 20:00</td>
+      <td><code>GET /v1/fee/fee-rate/get</code></td>
+      <td>新增</td>
+      <td>新增费率查询接口。</td>
+    </tr>
+    <tr>
+      <td>2019.07.22 12:00</td>
+      <td>
+        <code>GET /v1/order/orders/{order-id}/matchresults</code><br /><code
+          >GET /v1/order/matchresults</code
+        >
+      </td>
+      <td>新增</td>
+      <td>新增成交角色"role"字段以标识每笔成交角色是"taker"还是"maker"。</td>
+    </tr>
+    <tr>
+      <td>2019.07.11 20:00</td>
+      <td>
+        <code>POST /v1/order/orders/place</code><br /><code
+          >POST /v1/order/orders/submitCancelClientOrder</code
+        ><br /><code>GET /v1/order/orders/getClientOrder</code>
+      </td>
+      <td>优化/新增</td>
+      <td>下单/撤单/查询可基于client order ID。</td>
+    </tr>
+    <tr>
+      <td>2019.07.08 12:00</td>
+      <td>Websocket 订单资产推送接口</td>
+      <td>优化</td>
+      <td>
+        优化Websocket 订单资产推送接口<a
+          href="https://huobiapi.github.io/docs/spot/v1/cn/#5ea2e0cde2-3"
+          >心跳和限频</a
+        >。
+      </td>
+    </tr>
+    <tr>
+      <td>2019.06.14 16:00</td>
+      <td><code>POST /v1/dw/withdraw/api/create</code></td>
+      <td>优化</td>
+      <td>支持快速提币</td>
+    </tr>
+    <tr>
+      <td>2019.06.17 16:00</td>
+      <td>
+        <code>GET /v1/stable_coin/exchange_rate</code><br /><code
+          >POST /v1/stable_coin/exchange</code
+        >
+      </td>
+      <td>新增</td>
+      <td>新增接口支持用户随时获取最新的稳定币兑换汇率信息，并对稳定币执行兑入或兑出。</td>
+    </tr>
+    <tr>
+      <td>2019.06.12 16:00</td>
+      <td><code>GET /v1/common/symbols</code></td>
+      <td>优化</td>
+      <td>对交易对基础信息接口返回的内容进行优化，该优化向后兼容</td>
+    </tr>
+    <tr>
+      <td>2019.06.06 18:00</td>
+      <td><code>GET /v1/query/deposit-withdraw</code></td>
+      <td>优化</td>
+      <td>对充提记录查询接口的请求参数进行优化，该优化向后兼容</td>
+    </tr>
+    <tr>
+      <td>2019.06.05 20:00</td>
+      <td>所有需要验签的接口</td>
+      <td>优化</td>
+      <td>
+        访问验签接口时，API Key需要有适当的权限，现有的API
+        Key都默认有全部权限。权限分为3类：读取，交易和提币。每个接口相应的权限类别均已更新在各接口说明中
+      </td>
+    </tr>
+    <tr>
+      <td>2019.06.10 00:00</td>
+      <td><code>GET /v1/order/orders</code><br /><code>GET /v1/order/matchresults</code></td>
+      <td>修改</td>
+      <td>查询窗口调整为48小时，可查询整体时间范围不变</td>
+    </tr>
+    <tr>
+      <td>2019.05.15 10:00</td>
+      <td><code>POST /v1/futures/transfer</code></td>
+      <td>新增</td>
+      <td>提供币币与合约账户间的资产划转</td>
+    </tr>
+    <tr>
+      <td>2019.04.29 19:00</td>
+      <td><code>GET /v1/order/history</code></td>
+      <td>新增</td>
+      <td>
+        新增最近48小时内历史订单查询节点。新节点的上线后，现有订单查询节点“GET
+        /v1/order/orders”仍将被保留。然而，新节点“GET
+        /v1/order/history”被赋予更高服务等级。极端情况下，当服务荷载超过系统既定阈值时，节点“GET
+        /v1/order/orders”的服务可能会不可用，而新节点“GET
+        /v1/order/history”仍将继续提供服务。另外，火币正在计划支持另一个新节点专门用于用户48小时外的历史订单查询。此新节点上线的同时，现有节点“GET
+        /v1/order/orders”将被弃用。火币将及时告知用户这一变更，一旦变更时间确定。
+      </td>
+    </tr>
+    <tr>
+      <td>2019.04.17 10:00</td>
+      <td><code>GET /v1/order/orders</code></td>
+      <td>修改</td>
+      <td>文档优化，增加Start-date限制说明</td>
+    </tr>
+    <tr>
+      <td>2019.04.16 10:00</td>
+      <td><code>GET /v1/order/openOrders</code></td>
+      <td>修改</td>
+      <td>文档错误，参数account-id和symbol都是必填参数</td>
+    </tr>
+    <tr>
+      <td>2019.01.17 07:00</td>
+      <td>Websocket accounts</td>
+      <td>修改</td>
+      <td>增加订阅参数 model；<br />订阅返回的内容中不再推送交易子账户冻结余额的变化。</td>
+    </tr>
+    <tr>
+      <td>2018.07.10 11:00</td>
+      <td><code>GET /market/history/kline</code></td>
+      <td>修改</td>
+      <td><code>size</code> 取值范围由 [1-1000] 修改为 [1-2000]。</td>
+    </tr>
+    <tr>
+      <td>2018.07.06 16:00</td>
+      <td><code>POST /v1/order/orders/place</code></td>
+      <td>修改</td>
+      <td>
+        添加 <code>buy-limit-maker</code>，<code>sell-limit-maker</code>
+        两种下单类型支持；<br />新增获取某个帐号下指定交易对或者所有交易对的所有尚未成交订单接口:
+        <code>/v1/order/openOrders</code>。
+      </td>
+    </tr>
+    <tr>
+      <td>2018.07.06 16:00</td>
+      <td>
+        <code>GET /v1/order/openOrders</code><br /><code
+          >POST /v1/order/orders/batchCancelOpenOrders</code
+        >
+      </td>
+      <td>新增</td>
+      <td>
+        新增获取某个帐号下指定交易对或者所有交易对的所有尚未成交订单接口；<br />新增批量取消某个帐号下指定的订单列表中所有订单接口。
+      </td>
+    </tr>
+    <tr>
+      <td>2018.07.02 16:00</td>
+      <td>ETF 相关接口</td>
+      <td>新增</td>
+      <td>本次接口变更主要是支持 HB10 ETF 的换入和换出。</td>
+    </tr>
+    <tr>
+      <td>2018.06.20 16:00</td>
+      <td><code>GET /market/tickers</code></td>
+      <td>新增</td>
+      <td>新增 Tickers 接口，Tickers 为当前所有交易对行情数据。</td>
+    </tr>
+  </tbody>
+</table>
+<h1 id="5ea2e0cde2" data-label="intro">简介</h1>
+<p>欢迎使用火币 API！</p>
+
+<p>
+  此文档是火币API的唯一官方文档，火币API提供的功能和服务会在此文档持续更新，并会发布公告进行通知，建议您关注和订阅我们的公告，及时获取相关信息。
+</p>
+
+<p>
+  您可以点击
+  <a href="https://huobiglobal.zendesk.com/hc/zh-cn/sections/360000070201-API-%E5%85%AC%E5%91%8A"
+    >这里</a
+  >
+  查看公告。如果想订阅公告，请在“API公告”页右上角点击“关注”按钮，会弹出登录窗口，用账号登录成功后，再次点击“关注”按钮，并选择需要关注的内容类型，按钮变为“正在关注”，即表示订阅成功。若无账号，可以点击登录窗口中的“注册”按钮，进行注册。
+</p>
+
+<p><strong>如何阅读本文档</strong></p>
+
+<p>
+  文档上方导航栏是不同业务的API；右上方的语言按钮可以切换文档语言，目前支持中文和英文。
+  文档下方是某个业务的API文档，其中左侧是目录，中间是正文，右侧是请求参数和响应结果的示例。
+</p>
+
+<p>以下是现货API文档各章节主要内容</p>
+
+<p>第一部分是概要介绍：</p>
+
+<ul>
+  <li>
+    <strong>快速入门</strong>：该章节对火币API做了简单且全方位的介绍，适合第一次使用火币API的用户。
+  </li>
+  <li>
+    <strong>在线演示</strong>：该章节介绍了现货API在线演示工具，方便用户直接调用和观察线上API环境。
+  </li>
+  <li><strong>常见问题</strong>：该章节列举了使用火币API时常见的、和具体API无关的通用问题。</li>
+  <li><strong>联系我们</strong>：该章节介绍了针对不同问题，如何联系我们。</li>
+</ul>
+
+<p>第二部分是每个接口类的详细介绍，每个接口类一个章节，每个章节分为如下内容：</p>
+
+<ul>
+  <li><strong>简介</strong>：对该接口类进行简单介绍，包括一些注意事项和说明。</li>
+  <li>
+    <strong><em>具体接口</em></strong
+    >：介绍每个接口的用途、限频、请求、参数、返回等详细信息。
+  </li>
+  <li><strong>常见错误码</strong>：介绍该接口类下常见的错误码及其说明。</li>
+  <li><strong>常见问题</strong>：介绍该接口类下常见问题和解答。</li>
+</ul>
+<h1 id="25e54147de" data-label="quickStart">快速入门</h1>
+<h2 id="c1ae0a8486" data-label="preparation">接入准备</h2>
+<p>如需使用API ，请先登录网页端，完成API key的申请和权限配置，再据此文档详情进行开发和交易。</p>
+
+<p>您可以点击 <a href="https://www.hbg.com/zh-cn/apikey/">这里 </a> 创建 API Key。</p>
+
+<p>每个母用户可创建20组Api Key，每个Api Key可对应设置读取、交易、提币三种权限。</p>
+
+<p>权限说明如下：</p>
+
+<ul>
+  <li>读取权限：读取权限用于对数据的查询接口，例如：订单查询、成交查询等。</li>
+  <li>交易权限：交易权限用于下单、撤单、划转类接口。</li>
+  <li>提币权限：提币权限用于创建提币订单、取消提币订单操作。</li>
+</ul>
+
+<p>创建成功后请务必记住以下信息：</p>
+
+<ul>
+  <li>
+    <p><code>Access Key</code> API 访问密钥</p>
+  </li>
+  <li>
+    <p><code>Secret Key</code> 签名认证加密所使用的密钥（仅申请时可见）</p>
+  </li>
+</ul>
+
+<aside class="notice">
+  每个 API Key 最多可绑定 20个IP 地址(主机地址或网络地址)，未绑定 IP 地址的 API Key
+  有效期为90天。出于安全考虑，强烈建议您绑定 IP 地址。
+</aside>
+
+<aside class="warning">
+  <red><b>风险提示</b></red
+  >：这两个密钥与账号安全紧密相关，无论何时都请勿将二者<b>同时</b>向其它人透露。API
+  Key的泄露可能会造成您的资产损失（即使未开通提币权限），若发现API Key泄露请尽快删除该API Key。
+</aside>
+<h2 id="sdk" data-label="sdk_and_demo">SDK与代码示例</h2>
+<p><strong>SDK（推荐）</strong></p>
+
+<p>
+  <a href="https://github.com/huobiapi/huobi_Java">Java</a> |
+  <a href="https://github.com/huobiapi/huobi_Python">Python3</a> |
+  <a href="https://github.com/huobiapi/huobi_Cpp">C++</a> |
+  <a href="https://github.com/HuobiRDCenter/huobi_CSharp">C#</a> |
+  <a href="https://github.com/huobirdcenter/huobi_golang">Go</a>
+</p>
+
+<p><strong>其它代码示例</strong></p>
+
+<p>
+  <a href="https://github.com/huobiapi?tab=repositories"
+    >https://github.com/huobiapi?tab=repositories</a
+  >
+</p>
+<h2 id="2899551a8a" data-label="testnet_stopped">测试环境（已停止）</h2>
+<p>测试环境运行了一段时间后，因用户访问量很少，而维护成本很高，我们慎重决定后将其停止。</p>
+
+<p>线上环境更稳定，流动性更好，建议您直接使用线上环境。</p>
+<h2 id="5076603a3e" data-label="interface_type">接口类型</h2>
+<p>
+  火币为用户提供两种接口，您可根据自己的使用场景和偏好来选择适合的方式进行查询行情、交易或提币。
+</p>
+<h3 id="rest-api">REST API</h3>
+<p>
+  REST，即Representational State
+  Transfer的缩写，是目前较为流行的基于HTTP的一种通信机制，每一个URL代表一种资源。
+</p>
+
+<p>交易或资产提币等一次性操作，建议开发者使用REST API进行操作。</p>
+<h3 id="websocket-api">WebSocket API</h3>
+<p>
+  WebSocket是HTML5一种新的协议（Protocol）。它实现了客户端与服务器全双工通信，通过一次简单的握手就可以建立客户端和服务器连接，服务器可以根据业务规则主动推送信息给客户端。
+</p>
+
+<p>市场行情和买卖深度等信息，建议开发者使用WebSocket API进行获取。</p>
+
+<p><strong>接口鉴权</strong></p>
+
+<p>以上两种接口均包含公共接口和私有接口两种类型。</p>
+
+<p>公共接口可用于获取基础信息和行情数据。公共接口无需认证即可调用。</p>
+
+<p>私有接口可用于交易管理和账户管理。每个私有请求必须使用您的API Key进行签名验证。</p>
+<h2 id="urls" data-label="urls">接入URLs</h2>
+<p>您可以自行比较使用api.huobi.pro和api-aws.huobi.pro两个域名的延迟情况，选择延迟低的进行使用。</p>
+
+<p>其中，api-aws.huobi.pro域名对使用aws云服务的用户做了一定的链路延迟优化。</p>
+
+<p><strong>REST API</strong></p>
+
+<p>
+  <strong><code>https://api.huobi.pro</code></strong>
+</p>
+
+<p>
+  <strong><code>https://api-aws.huobi.pro</code></strong>
+</p>
+
+<p><strong>Websocket Feed（行情，不包含MBP增量行情）</strong></p>
+
+<p>
+  <strong><code>wss://api.huobi.pro/ws</code></strong>
+</p>
+
+<p>
+  <strong><code>wss://api-aws.huobi.pro/ws</code></strong>
+</p>
+
+<p><strong>Websocket Feed（行情，仅MBP增量行情）</strong></p>
+
+<p>
+  <strong><code>wss://api.huobi.pro/feed</code></strong>
+</p>
+
+<p>
+  <strong><code>wss://api-aws.huobi.pro/feed</code></strong>
+</p>
+
+<p><strong>Websocket Feed（资产和订单）</strong></p>
+
+<p>
+  <strong><code>wss://api.huobi.pro/ws/v2</code></strong>
+</p>
+
+<p>
+  <strong><code>wss://api-aws.huobi.pro/ws/v2</code></strong>
+</p>
+
+<aside class="notice">请使用中国大陆以外的 IP 访问火币 API。</aside>
+
+<aside class="notice">鉴于延迟高和稳定性差等原因，不建议通过代理的方式访问火币API。</aside>
+
+<aside class="notice">
+  为保证API服务的稳定性，建议使用日本AWS云服务器进行访问。如使用中国大陆境内的客户端服务器，连接的稳定性将难以保证。
+</aside>
+<h2 id="c64cd15fdc" data-label="auth">签名认证</h2>
+<h3 id="34addae335">签名说明</h3>
+<p>
+  API 请求在通过 internet
+  传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的
+  API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。<br />
+  每一个API Key需要有适当的权限才能访问相应的接口，每个新创建的API
+  Key都需要分配权限。在使用接口前，请查看每个接口的权限类型，并确认你的API Key有相应的权限。
+</p>
+
+<p>一个合法的请求由以下几部分组成：</p>
+
+<ul>
+  <li>方法请求地址：即访问服务器地址 api.huobi.pro，比如 api.huobi.pro/v1/order/orders。</li>
+  <li>API 访问Id（AccessKeyId）：您申请的 API Key 中的 Access Key。</li>
+  <li>签名方法（SignatureMethod）：用户计算签名的基于哈希的协议，此处使用 HmacSHA256。</li>
+  <li>签名版本（SignatureVersion）：签名协议的版本，此处使用2。</li>
+  <li>
+    时间戳（Timestamp）：您发出请求的时间 (UTC 时间)
+    。如：2017-05-11T16:22:06。在查询请求中包含此值有助于防止第三方截取您的请求。
+  </li>
+  <li>
+    必选和可选参数：每个方法都有一组用于定义 API
+    调用的必需参数和可选参数。可以在每个方法的说明中查看这些参数及其含义。
+
+    <ul>
+      <li>对于 GET 请求，每个方法自带的参数都需要进行签名运算。</li>
+      <li>对于 POST 请求，每个方法自带的参数不进行签名认证，并且需要放在 body 中。</li>
+    </ul>
+  </li>
+  <li>签名：签名计算得出的值，用于确保签名有效和未被篡改。</li>
+</ul>
+<h3 id="1fbac240b7">签名步骤</h3>
+<p>
+  规范要计算签名的请求 因为使用 HMAC
+  进行签名计算时，使用不同内容计算得到的结果会完全不同。所以在进行签名计算前，请先对请求进行规范化处理。下面以查询某订单详情请求为例进行说明：
+</p>
+
+<p>查询某订单详情时完整的请求URL</p>
+
+<p><code>https://api.huobi.pro/v1/order/orders?</code></p>
+
+<p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
+
+<p><code>&amp;SignatureMethod=HmacSHA256</code></p>
+
+<p><code>&amp;SignatureVersion=2</code></p>
+
+<p><code>&amp;Timestamp=2017-05-11T15:19:30</code></p>
+
+<p><code>&amp;order-id=1234567890</code></p>
+
+<p><strong>1. 请求方法（GET 或 POST，WebSocket用GET），后面添加换行符 “\n”</strong></p>
+
+<p>例如： <code>GET\n</code></p>
+
+<p><strong>2. 添加小写的访问域名，后面添加换行符 “\n”</strong></p>
+
+<p>例如： <code> api.huobi.pro\n </code></p>
+
+<p><strong>3. 访问方法的路径，后面添加换行符 “\n”</strong></p>
+
+<p>
+  例如查询订单：<br />
+  <code> /v1/order/orders\n </code>
+</p>
+
+<p>
+  例如WebSocket v2<br />
+  <code> /ws/v2 </code>
+</p>
+
+<p><strong>4. 对参数进行URL编码，并且按照ASCII码顺序进行排序</strong></p>
+
+<p>例如，下面是请求参数的原始顺序，且进行URL编码后</p>
+
+<p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
+
+<p><code>order-id=1234567890</code></p>
+
+<p><code>SignatureMethod=HmacSHA256</code></p>
+
+<p><code>SignatureVersion=2</code></p>
+
+<p><code>Timestamp=2017-05-11T15%3A19%3A30</code></p>
+
+<aside class="notice">
+  使用 UTF-8 编码，且进行了 URL 编码，十六进制字符必须大写，如 “:” 会被编码为 “%3A” ，空格被编码为
+  “%20”。
+</aside>
+
+<aside class="notice">
+  时间戳（Timestamp）需要以YYYY-MM-DDThh:mm:ss格式添加并且进行 URL 编码。时间戳有效时间5分钟。
+</aside>
+
+<p>经过排序之后</p>
+
+<p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
+
+<p><code>SignatureMethod=HmacSHA256</code></p>
+
+<p><code>SignatureVersion=2</code></p>
+
+<p><code>Timestamp=2017-05-11T15%3A19%3A30</code></p>
+
+<p><code>order-id=1234567890</code></p>
+
+<p><strong>5. 按照以上顺序，将各参数使用字符 “&amp;” 连接</strong></p>
+
+<p>
+  <code
+    >AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;order-id=1234567890</code
+  >
+</p>
+
+<p><strong>6. 组成最终的要进行签名计算的字符串如下</strong></p>
+
+<p><code>GET\n</code></p>
+
+<p><code>api.huobi.pro\n</code></p>
+
+<p><code>/v1/order/orders\n</code></p>
+
+<p>
+  <code
+    >AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;order-id=1234567890</code
+  >
+</p>
+
+<p><strong>7. 用上一步里生成的 “请求字符串” 和你的密钥 (Secret Key) 生成一个数字签名</strong></p>
+
+<ol>
+  <li>将上一步得到的请求字符串和 API 私钥作为两个参数，调用HmacSHA256哈希函数来获得哈希值。</li>
+  <li>将此哈希值用base-64编码，得到的值作为此次接口调用的数字签名。</li>
+</ol>
+
+<p><code>4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=</code></p>
+
+<p><strong>8. 将生成的数字签名加入到请求里</strong></p>
+
+<p>对于Rest接口：</p>
+
+<ol>
+  <li>把所有必须的认证参数添加到接口调用的路径参数里</li>
+  <li>把数字签名在URL编码后加入到路径参数里，参数名为“Signature”。</li>
+</ol>
+
+<p>最终，发送到服务器的 API 请求应该为</p>
+
+<p>
+  <code
+    >https://api.huobi.pro/v1/order/orders?AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;order-id=1234567890&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;Signature=4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D</code
+  >
+</p>
+
+<p>对于WebSocket接口：</p>
+
+<ol>
+  <li>按照要求的JSON格式，填入参数和签名。</li>
+  <li>JSON请求中的参数不需要URL编码</li>
+</ol>
+
+<p>例如：</p>
+
+<p>
+  <code>
+    { "action": "req", "ch": "auth", "params": { "authType":"api", "accessKey":
+    "e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx", "signatureMethod": "HmacSHA256", "signatureVersion": "2.1",
+    "timestamp": "2019-09-01T18:16:16", "signature": "4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o="
+    } }
+  </code>
+</p>
+<h2 id="df18e73a18" data-label="subuser">子用户</h2>
+<p>
+  子用户可以用来隔离资产与交易，资产可以在母子用户之间划转；子用户只能在子用户内进行交易，并且子用户之间资产不能直接划转，只有母用户有划转权限。
+</p>
+
+<p>子用户拥有独立的登录账号密码和 API Key，均由母用户在网页端进行管理。</p>
+
+<p>
+  每个母用户可创建200个子用户，每个子用户可创建20组Api Key，每个Api
+  Key可对应设置读取、交易两种权限。
+</p>
+
+<p>子用户的 API Key 也可绑定 IP 地址, 有效期的限制与母用户的API Key一致。</p>
+
+<p>
+  您可以点击
+  <a href="https://account.hbg.com/zh-cn/subaccount/management/">这里 </a> 创建子用户并管理。
+</p>
+
+<p>子用户可以访问所有公共接口，包括基本信息和市场行情，子用户可以访问的私有接口如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>接口</th>
+      <th>说明</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#fd6ce2a756"
+          >POST /v1/order/orders/place</a
+        >
+      </td>
+      <td>创建并执行订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#4e53c0fccd"
+          >POST /v1/order/orders/{order-id}/submitcancel</a
+        >
+      </td>
+      <td>撤销一个订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#client-order-id"
+          >POST /v1/order/orders/submitCancelClientOrder</a
+        >
+      </td>
+      <td>撤销订单（基于client order ID）</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#ad00632ed5"
+          >POST /v1/order/orders/batchcancel</a
+        >
+      </td>
+      <td>批量撤销订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#open-orders"
+          >POST /v1/order/orders/batchCancelOpenOrders</a
+        >
+      </td>
+      <td>撤销当前委托订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#92d59b6aad"
+          >GET /v1/order/orders/{order-id}</a
+        >
+      </td>
+      <td>查询一个订单详情</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#d72a5b49e7">GET /v1/order/orders</a>
+      </td>
+      <td>查询当前委托、历史委托</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#95f2078356"
+          >GET /v1/order/openOrders</a
+        >
+      </td>
+      <td>查询当前委托订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0fa6055598"
+          >GET /v1/order/matchresults</a
+        >
+      </td>
+      <td>查询成交</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#56c6c47284"
+          >GET /v1/order/orders/{order-id}/matchresults</a
+        >
+      </td>
+      <td>查询某个订单的成交明细</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#bd9157656f"
+          >GET /v1/account/accounts</a
+        >
+      </td>
+      <td>查询当前用户的所有账户</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#870c0ab88b"
+          >GET /v1/account/accounts/{account-id}/balance</a
+        >
+      </td>
+      <td>查询指定账户的余额</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#e227a2a3e8"
+          >POST /v1/futures/transfer</a
+        >
+      </td>
+      <td>币币与合约账户间的资产划转</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d3c2e7382"
+          >POST /v1/dw/transfer-in/margin</a
+        >
+      </td>
+      <td>从币币交易账户划转至杠杆账户</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d3c2e7382"
+          >POST /v1/dw/transfer-out/margin</a
+        >
+      </td>
+      <td>从杠杆账户划转至币币交易账户</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#48cca1ce88">POST /v1/margin/orders</a>
+      </td>
+      <td>申请借币</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#48aa7c8199"
+          >POST /v1/margin/orders/{order-id}/repay</a
+        >
+      </td>
+      <td>归还借币</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#e52396720a"
+          >GET /v1/margin/loan-orders</a
+        >
+      </td>
+      <td>查询借币记录</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#6e79ba8e80"
+          >GET /v1/margin/accounts/balance</a
+        >
+      </td>
+      <td>查询杠杆账户余额</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#84f1b5486d">GET /v1/account/history</a>
+      </td>
+      <td>查询账户流水</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d3c2e7382-2"
+          >POST /v1/cross-margin/transfer-in</a
+        >
+      </td>
+      <td>资产划转</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d3c2e7382-2"
+          >POST /v1/cross-margin/transfer-out</a
+        >
+      </td>
+      <td>资产划转</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#e257b9b6a0-2"
+          >GET /v1/cross-margin/loan-info</a
+        >
+      </td>
+      <td>查询借币币息率及额度</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0ef2de08fa-2"
+          >POST /v1/cross-margin/orders</a
+        >
+      </td>
+      <td>申请借币</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#097277f9fc-2"
+          >POST /v1/cross-margin/orders/{order-id}/repay</a
+        >
+      </td>
+      <td>归还借币</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#1e90599f7f-2"
+          >GET /v1/cross-margin/loan-orders</a
+        >
+      </td>
+      <td>查询借币订单</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#bf3a643133-2"
+          >GET /v1/cross-margin/accounts/balance</a
+        >
+      </td>
+      <td>借币账户详情</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#2f6797c498">GET /v2/account/ledger</a>
+      </td>
+      <td>查询财务流水</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d3c2e7382"
+          >POST /v1/account/transfer</a
+        >
+      </td>
+      <td>资产划转</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#0d7f115f63">GET /v2/point/account</a>
+      </td>
+      <td>查询点卡余额</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#c71521e5d9">POST /v2/point/transfer</a>
+      </td>
+      <td>点卡划转</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#8bb7c6b75e">GET /v2/etp/reference</a>
+      </td>
+      <td>杠杆ETP基础参考信息</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#etp-4">POST /v2/etp/creation</a>
+      </td>
+      <td>杠杆ETP换入</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#etp-5">POST /v2/etp/redemption</a>
+      </td>
+      <td>杠杆ETP换出</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#etp-6">GET /v2/etp/transactions</a>
+      </td>
+      <td>获取杠杆ETP换入换出记录</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#etp-7">GET /v2/etp/transaction</a>
+      </td>
+      <td>获取特定杠杆ETP换入换出记录</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://huobiapi.github.io/docs/spot/v1/cn/#etp-8">GET /v2/etp/rebalance</a>
+      </td>
+      <td>获取杠杆ETP调仓记录</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<aside class="notice">其他接口子用户不可访问，如果尝试访问，系统会返回 “error-code 403”。</aside>
+<h2 id="5dd7427c5e" data-label="glossary">业务字典</h2>
+<h3 id="b79e080266">交易对</h3>
+<p>交易对由基础币种和报价币种组成。以交易对 BTC/USDT 为例，BTC 为基础币种，USDT 为报价币种。</p>
+
+<p>基础币种对应字段为 base-currency 。</p>
+
+<p>报价币种对应字段为 quote-currency 。</p>
+<h3 id="c3d92b20c8">账户</h3>
+<p>不同业务对应需要不同的账户，account-id为不同业务账户的唯一标识ID。</p>
+
+<p>account-id可通过/v1/account/accounts接口获取，并根据account-type区分具体账户。</p>
+
+<p>账户类型包括：</p>
+
+<ul>
+  <li>spot：现货账户<br /></li>
+  <li>otc：OTC账户<br /></li>
+  <li>margin：逐仓杠杆账户，该账户类型以subType区分具体币种对账户<br /></li>
+  <li>super-margin（或cross-margin）：全仓杠杆账户<br /></li>
+  <li>point：点卡账户<br /></li>
+  <li>minepool：矿池账户<br /></li>
+  <li>etf：ETF账户</li>
+  <li>抵押借贷：crypto-loans</li>
+</ul>
+
+<p>更多信息，可以点击<a href="https://www.huobi.com/zh-cn/guide/">火币成长学院</a> 进行了解。</p>
+<h1 id="2d07d50c97" data-label="instruction">接入说明</h1>
+<h2 id="3951e02bdc" data-label="overview">接口概览</h2>
+<table>
+  <thead>
+    <tr>
+      <th>接口分类</th>
+      <th>分类链接</th>
+      <th>概述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>基础类</td>
+      <td>/v1/common/*</td>
+      <td>基础类接口，包括币种、币种对、时间戳等接口</td>
+    </tr>
+    <tr>
+      <td>行情类</td>
+      <td>/market/*</td>
+      <td>公共行情类接口，包括成交、深度、行情等</td>
+    </tr>
+    <tr>
+      <td>账户类</td>
+      <td>/v1/account/* /v1/subuser/*</td>
+      <td>账户类接口，包括账户信息，子用户等</td>
+    </tr>
+    <tr>
+      <td>订单类</td>
+      <td>/v1/order/*</td>
+      <td>订单类接口，包括下单、撤单、订单查询、成交查询等</td>
+    </tr>
+    <tr>
+      <td>逐仓杠杆类</td>
+      <td>/v1/margin/*</td>
+      <td>逐仓杠杆类接口，包括借币、还币、查询等</td>
+    </tr>
+    <tr>
+      <td>全仓杠杆类接口</td>
+      <td>/v1/cross-margin/*</td>
+      <td>全仓杠杆类接口，包括借币、还币、查询等</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>该分类为大类整理，部分接口未遵循此规则，请根据需求查看有关接口文档。</p>
+<h2 id="ec3cea3958" data-label="ratelimit_new">新限频规则</h2>
+<ul>
+  <li>
+    <p>
+      当前，新限频规则正在逐步上线中，已单独标注限频值的接口且该限频值被标注为NEW的接口适用新限频规则。
+    </p>
+  </li>
+  <li>
+    <p>
+      新限频规则采用基于UID的限频机制，即，同一UID下各API
+      Key同时对某单个节点请求的频率不能超出单位时间内该节点最大允许访问次数的限制。
+    </p>
+  </li>
+  <li>
+    <p>
+      用户可根据Http
+      Header中的"X-HB-RateLimit-Requests-Remain"（限频剩余次数）及"X-HB-RateLimit-Requests-Expire"（窗口过期时间）查看当前限频使用情况，以及所在时间窗口的过期时间，根据该数值动态调整您的请求频率。
+    </p>
+  </li>
+</ul>
+<h2 id="c1fd2fc5ac" data-label="ratelimit">限频规则</h2>
+<p>
+  除已单独标注限频值为NEW的接口外 -<br />
+  * 每个API Key 在1秒之内限制10次<br />
+  * 若接口不需要API Key，则每个IP在1秒内限制10次<br />
+</p>
+
+<p>比如：</p>
+
+<ul>
+  <li>资产订单类接口调用根据API Key进行限频：1秒10次</li>
+  <li>行情类接口调用根据IP进行限频：1秒10次</li>
+</ul>
+<h2 id="21d67c3c4c" data-label="request_formula">请求格式</h2>
+<p>所有的API请求都是restful，目前只有两种方法：GET和POST</p>
+
+<ul>
+  <li>GET请求：所有的参数都在路径参数里</li>
+  <li>POST请求，所有参数以JSON格式发送在请求主体（body）里</li>
+</ul>
+<h2 id="dac673286f" data-label="response_formula">返回格式</h2>
+<p>所有的接口都是JSON格式。其中v1和v2接口的JSON定义略有区别。</p>
+
+<p>
+  <strong>v1接口返回格式</strong>：最上层有四个字段：<code>status</code>, <code>ch</code>,
+  <code>ts</code> 和
+  <code>data</code>。前三个字段表示请求状态和属性，实际的业务数据在<code>data</code>字段里。
+</p>
+
+<p>以下是一个返回格式的样例：</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.btcusdt.kline.1day"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499223904680</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span></code></pre>
+<table>
+  <thead>
+    <tr>
+      <th>参数名称</th>
+      <th>数据类型</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>status</td>
+      <td>string</td>
+      <td>API接口返回状态</td>
+    </tr>
+    <tr>
+      <td>ch</td>
+      <td>string</td>
+      <td>接口数据对应的数据流。部分接口没有对应数据流因此不返回此字段</td>
+    </tr>
+    <tr>
+      <td>ts</td>
+      <td>long</td>
+      <td>接口返回的UTC时间的时间戳，单位毫秒</td>
+    </tr>
+    <tr>
+      <td>data</td>
+      <td>object</td>
+      <td>接口返回数据主体</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <strong>v2接口返回格式</strong>：最上层有三个字段：<code>code</code>, <code>message</code> 和
+  <code>data</code>。前两个字段表示返回码和错误消息，实际的业务数据在<code>data</code>字段里。
+</p>
+
+<p>以下是一个返回格式的样例：</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span></code></pre>
+<table>
+  <thead>
+    <tr>
+      <th>参数名称</th>
+      <th>数据类型</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>code</td>
+      <td>int</td>
+      <td>API接口返回码</td>
+    </tr>
+    <tr>
+      <td>message</td>
+      <td>string</td>
+      <td>错误消息（如果有）</td>
+    </tr>
+    <tr>
+      <td>data</td>
+      <td>object</td>
+      <td>接口返回数据主体</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="b031dc9a85" data-label="datatype">数据类型</h2>
+<p>本文档对JSON格式中数据类型的描述做如下约定：</p>
+
+<ul>
+  <li><code>string</code>: 字符串类型，用双引号（"）引用</li>
+  <li><code>int</code>: 32位整数，主要涉及到状态码、大小、次数等</li>
+  <li><code>long</code>: 64位整数，主要涉及到Id和时间戳</li>
+  <li><code>float</code>: 浮点数，主要涉及到金额和价格，建议程序中使用高精度浮点型</li>
+  <li><code>object</code>: 对象，包含一个子对象{}</li>
+  <li><code>array</code>: 数组，包含多个对象</li>
+</ul>
+<h2 id="e01e16de50" data-label="best_practices">最佳实践</h2>
+<h3 id="9f100d1da9">安全类</h3>
+<ul>
+  <li>
+    强烈建议：在申请API Key时，请绑定您的IP地址，以此来保证您的API
+    Key仅能在您自己的IP上使用。另外，在API Key未绑定IP时，有效期为90天，绑定IP后，则永远不会过期。
+  </li>
+  <li>
+    强烈建议：不要将API Key暴露给任何人（包括第三方软件或机构），API Key代表了您的账户权限，API
+    Key的暴露可能会对您的信息、资金造成损失，若API Key泄露，请尽快删除并重新创建。
+  </li>
+</ul>
+<h3 id="7312d1c8d6">公共类</h3>
+<p><strong>API访问建议</strong></p>
+
+<ul>
+  <li>
+    不建议在中国大陆境内使用临时域名以及代理的方式访问Huobi
+    API，此类方式访问API连接的稳定性很难保证。
+  </li>
+  <li>建议使用日本AWS云服务器进行访问。</li>
+  <li>
+    官方域名api.huobi.pro,
+    api-aws.huobi.pro，若您使用了AWS云服务，建议使用api-aws.huobi.pro域名，该域名为AWS用户做了链路上的优化，链路延迟相对更低。
+  </li>
+</ul>
+
+<p><strong>新限频规则</strong></p>
+
+<ul>
+  <li><p>当前最新限频规则正在逐步上线中，已单独标注限频值的接口适用新限频规则。</p></li>
+  <li>
+    <p>
+      用户可根据Http
+      Header中“X-HB-RateLimit-Requests-Remain（限频剩余次数）”，“X-HB-RateLimit-Requests-Expire（窗口过期时间）”查看当前限频使用情况，以及所在时间窗口的过期时间，根据该数值动态调整您的请求频率。
+    </p>
+  </li>
+  <li>
+    <p>
+      同一UID下各API Key同时对某单个节点请求的频率不能超出单位时间内该节点最大允许访问次数的限制。
+    </p>
+  </li>
+</ul>
+<h3 id="8e57104ec2">行情类</h3>
+<p><strong>行情类数据的获取</strong></p>
+
+<ul>
+  <li>
+    行情类数据推荐使用WebSocket方式实时接收数据变化的推送，并在程序中进行数据的缓存，WebSocket方式实时性更高，且不受限频的影响。
+  </li>
+  <li>
+    建议用户不要在同一条WebSocket连接中订阅过多的主题和币种对，否则可能会因为上游数据量过大，导致网络阻塞，以至于连接断连。
+  </li>
+</ul>
+
+<p><strong>最新成交价格的获取</strong></p>
+
+<ul>
+  <li>
+    推荐使用WebSocket的方式订阅<code>market.$symbol.trade.detail</code>主题，该主题为逐笔成交信息推送，该数据中成交的Price即为最新成交价格，且实时性更高。
+  </li>
+</ul>
+
+<p><strong>盘口深度的获取</strong></p>
+
+<ul>
+  <li>
+    若对盘口数据的要求仅为买一卖一，可使用WebSocket订阅<code>market.$symbol.bbo</code>主题，该主题会在买一卖一变更时进行推送。
+  </li>
+  <li>
+    若需要多档数据，且对数据的实时性要求不高的情况下，可使用WebSocket订阅<code>market.$symbol.depth.$type</code>主题，该主题推送周期为1秒。
+  </li>
+  <li>
+    若需要多档数据，且对数据的实时性要求较高的情况下，可使用WebSocket订阅<code>market.$symbol.mbp.$levels</code>主题，并使用该主题发送req请求，构建本地深度，并增量跟新，该主题增量消息推送最快周期为100ms。
+  </li>
+  <li>
+    建议使用Rest（<code>/market/depth</code>）、WebSocket全量推送（<code>market.$symbol.depth.$type</code>）获取深度时，根据version字段对数据进行去重（舍弃较小的version）；使用WebSocket增量推送（<code>market.$symbol.mbp.$levels</code>）时，根据seqNum字段进行去重（舍弃较小的seqNum）。
+  </li>
+</ul>
+
+<p><strong>最新成交的获取</strong></p>
+
+<ul>
+  <li>
+    建议订阅WebSocket成交明细（<code>market.$symbol.trade.detail</code>）主题时，可根据tradeId字段对数据进行去重。
+  </li>
+</ul>
+<h3 id="3fbfbcf72b">订单类</h3>
+<p><strong>下单接口（/v1/order/orders/place）</strong></p>
+
+<ul>
+  <li>
+    建议用户下单前根据<code>/v1/common/symbols</code>接口中返回的币种对参数数据对下单价格、下单数量等参进行校验，避免产生无效的下单请求。
+  </li>
+  <li>
+    推荐下单时携带<code>client-order-id</code>参数，且能够保证该参数的唯一性（每次发送请求时都不同，且唯一），该参数能够防止在发起下单请求时由于网络或其他原因造成接口超时或没有返回的情况，在此情况下，可根据<code>client-order-id</code>对WebSocket中推送过来的数据进行验证，或使用<code>/v1/order/orders/getClientOrder</code>接口查询该订单信息。
+  </li>
+</ul>
+
+<p><strong>搜索历史订单（/v1/order/orders）</strong></p>
+
+<ul>
+  <li>
+    推荐使用<code>start-time</code>、<code>end-time</code>参数进行查询，该参数传入值为13位时间戳（精确至毫秒），使用该参数查询时最大查询窗口为48小时（2天），推荐按照小时进行查询，您搜索的时间范围越小，时间戳准确性越高，查询的效率会更高，可以根据上次查询的时间戳进行迭代查询。
+  </li>
+</ul>
+
+<p><strong>订单状态变化的通知</strong></p>
+
+<ul>
+  <li>
+    建议使用WebSocket订阅<code>orders.$symbol.update</code>主题，该主题拥有更低的数据延迟以及更准确的消息顺序。
+  </li>
+  <li>
+    不建议使用WebSocket订阅<code>orders.$symbol</code>主题，该主题已由<code>orders.$symbol.update</code>取代，会在后续停止服务，请尽早更换使用。
+  </li>
+</ul>
+<h3 id="dff6dbe326">账户类</h3>
+<p><strong>资产变更</strong></p>
+
+<ul>
+  <li>
+    使用WebSocket的方式，同时订阅<code>orders.$symbol.update</code>、<code>accounts.update#${mode}</code>主题，<code>orders.$symbol.update</code>用于接收订单的状态变化（创建、成交、撤销以及相关成交价格、数量信息），由于该主题在推送数据时，未经过清算，所以时效性更快，可根据<code>accounts.update#${mode}</code>主题接收相关资产的变更信息，以此来维护账户内的资金情况。
+  </li>
+  <li>
+    不建议WebSocket订阅<code>accounts</code>主题，该主题已由<code>accounts.update#${mode}</code>取代，会在后续停止服务，请尽早更换使用。
+  </li>
+</ul>
+<h1 id="a3f390918b">在线演示</h1>
+<p>
+  API<a href="https://open.huobigroup.com/">在线演示</a
+  >可以让用户不需要写任何一行代码，只要鼠标点击就可以直接调用线上每个API，并可以观察到调用API的请求和返回结果。该调试工具界面和API文档类似，提供了参数输入框和返回字段的说明，用户可以快速上手，几乎不需要额外的使用手册。
+</p>
+
+<p>
+  该工具封装了共享的API
+  Key，并且在调用私有接口后会将详细的签名过程和参数展示出来。如果您的程序遇到签名问题无法解决，可以将在其用到的API
+  Key和时间戳复制到您的程序中 ，将两者进行对比，发现签名失败的原因。
+</p>
+<h1 id="0adb1147b3">常见问题</h1>
+<p>本章列举了和具体API无关的通用常见问题，如网络、签名或通用错误等。</p>
+
+<p>针对某类或某个API的问题，请查看每章API的错误码和常见问题。</p>
+<h3 id="q1-uid-account-id">Q1：什么是UID和account-id？</h3>
+<p>
+  A：UID是用户ID，是标示每个用户的唯一ID（包括母用户和子用户），UID可以在Web或App界面的个人信息里查看到，也可以通过接口
+  <code>GET /v2/user/uid</code>获得。
+</p>
+
+<p>
+  account-id则是该用户下不同业务账户的ID，需要通过<code>GET /v1/account/accounts</code
+  >接口获取，并根据account-type区分具体账户。如果需要开通某个账户，需要首先通过Web或App开通并向该账户进行转账。
+</p>
+
+<p>账户类型包括但不限于如下账户（合约账户不包括在内）：</p>
+
+<ul>
+  <li>spot 现货账户<br /></li>
+  <li>otc OTC账户<br /></li>
+  <li>margin 逐仓杠杆账户，该账户类型以subType区分具体币种对账户<br /></li>
+  <li>super-margin（或cross-margin） 全仓杠杆账户</li>
+  <li>investment C2C杠杆借出账户</li>
+  <li>borrow C2C杠杆借入账户</li>
+  <li>point 点卡账户<br /></li>
+  <li>minepool 矿池账户</li>
+  <li>etf ETF账户<br /></li>
+</ul>
+<h3 id="q2-api-key">Q2：一个用户可以申请多少个API Key？</h3>
+<p>
+  每个母用户可创建20组API Key，每个API Key可对应设置读取、交易、提币三种权限。
+  每个母用户还可创建200个子用户，每个子用户可创建20组API Key，每个API
+  Key可对应设置读取、交易两种权限。
+</p>
+
+<p>以下是三种权限的说明：</p>
+
+<ul>
+  <li>读取权限：读取权限用于对数据的查询接口，例如：订单查询、成交查询等。<br /></li>
+  <li>交易权限：交易权限用于下单、撤单、划转类接口。<br /></li>
+  <li>提币权限：提币权限用于创建提币订单、取消提币订单操作。<br /></li>
+</ul>
+<h3 id="q3">Q3：为什么经常出现断线、超时的情况？</h3>
+<p>请检查是否属于以下情况：</p>
+
+<ol>
+  <li>客户端服务器如在中国大陆境内，连接的稳定性很难保证，建议使用日本AWS云服务器进行访问。</li>
+  <li>域名建议使用api.huobi.pro或api-aws.huobi.pro，其他不建议使用。</li>
+</ol>
+<h3 id="q4-websocket">Q4：为什么WebSocket总是断开连接？</h3>
+<p>常见原因有：</p>
+
+<ol>
+  <li>未回复Pong，WebSocket连接需在接收到服务端发送的Ping信息后回复Pong，保证连接的稳定。</li>
+  <li>网络原因造成客户端发送了Pong消息，但服务端并未接收到。</li>
+  <li>网络原因造成连接断开。</li>
+  <li>
+    建议用户做好WebSocket连接断连重连机制，在确保心跳（Ping/Pong）消息正确回复后若连接意外断开，程序能够自动进行重新连接。
+  </li>
+</ol>
+<h3 id="q5-api-huobi-pro-api-aws-huobi-pro">Q5：api.huobi.pro 与 api-aws.huobi.pro有什么区别？</h3>
+<p>api-aws.huobi.pro域名对使用aws云服务的用户做了链路延迟优化，请求时延更低。</p>
+<h3 id="q6">Q6：为什么签名认证总返回失败？</h3>
+<p>请检查如下可能的原因：</p>
+
+<p>1、签名参数应该按照ASCII码排序。比如下面是原始的参数：</p>
+
+<p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
+
+<p><code>order-id=1234567890</code></p>
+
+<p><code>SignatureMethod=HmacSHA256</code></p>
+
+<p><code>SignatureVersion=2</code></p>
+
+<p><code>Timestamp=2017-05-11T15%3A19%3A30</code></p>
+
+<p>排序之后应该为：</p>
+
+<p><code>AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx</code></p>
+
+<p><code>SignatureMethod=HmacSHA256</code></p>
+
+<p><code>SignatureVersion=2</code></p>
+
+<p><code>Timestamp=2017-05-11T15%3A19%3A30</code></p>
+
+<p><code>order-id=1234567890</code></p>
+
+<p>2、签名串需进行URL编码。比如：</p>
+
+<ul>
+  <li>冒号 <code>:</code>会被编码为<code>%3A</code>，空格会被编码为 <code>%20</code></li>
+  <li>
+    时间戳需要格式化为 <code>YYYY-MM-DDThh:mm:ss</code> ，经过URL编码之后为
+    <code>2017-05-11T15%3A19%3A30</code><br />
+  </li>
+</ul>
+
+<p>3、签名需进行 base64 编码</p>
+
+<p>4、Get请求参数需在签名串中</p>
+
+<p>5、时间为UTC时间转换为YYYY-MM-DDTHH:mm:ss</p>
+
+<p>6、检查本机时间与标准时间是否存在偏差（偏差应小于1分钟）</p>
+
+<p>7、WebSocket发送验签认证消息时，消息体不需要URL编码</p>
+
+<p>8、签名时所带Host应与请求接口时Host相同</p>
+
+<p>如果您使用了代理，代理可能会改变请求Host，可以尝试去掉代理；</p>
+
+<p>
+  或者，您使用的网络连接库可能会把端口包含在Host内，可以尝试在签名用到的Host中包含端口，如“api.huobi.pro:443"
+</p>
+
+<p>9、Access Key 与 Secret Key中是否存在隐藏特殊字符，影响签名</p>
+
+<p>
+  当前官方已支持多种语言的<a href="https://github.com/HuobiRDCenter">SDK</a
+  >，可以参考SDK的签名实现，或者以下三种语言的签名样例代码
+</p>
+
+<p>
+  <a href="https://github.com/HuobiRDCenter/huobi_Java/blob/master/java_signature_demo.md"
+    >JAVA签名样例代码</a
+  >
+  |
+  <a
+    href="https://github.com/HuobiRDCenter/huobi_Python/blob/master/example/python_signature_demo.md"
+    >Python签名样例代码</a
+  >
+  |
+  <a href="https://github.com/HuobiRDCenter/huobi_Cpp/blob/master/examples/cpp_signature_demo.md"
+    >C++签名样例代码
+  </a>
+</p>
+<h3 id="q7-incorrect-access-key">Q7：调用接口返回Incorrect Access Key 错误是什么原因？</h3>
+<p>请检查URL请求中Access Key是否传递准确，例如：</p>
+
+<ol>
+  <li>Access Key没有传递</li>
+  <li>Access Key位数不准确</li>
+  <li>Access Key已经被删除</li>
+  <li>URL请求中参数拼接错误或者特殊字符没有进行编码导致服务端对AccessKey解析不正确</li>
+</ol>
+<h3 id="q8-gateway-internal-error">Q8：调用接口返回 gateway-internal-error 错误是什么原因？</h3>
+<p>请检查是否属于以下情况：</p>
+
+<ol>
+  <li>可能为网络原因或服务内部错误，请稍后进行重试。</li>
+  <li>发送数据格式是否正确（需要标准JSON格式）。</li>
+  <li>POST请求头header需要声明为<code>Content-Type:application/json</code> 。</li>
+</ol>
+<h3 id="q9-login-required">Q9：调用接口返回 login-required 错误是什么原因？</h3>
+<p>请检查是否属于以下情况：</p>
+
+<ol>
+  <li>未将AccessKey参数带入URL中。</li>
+  <li>未将Signature参数带入URL中。</li>
+</ol>
+<h3 id="q10-rest-http-405-method-not-allowed">
+  Q10: 调用Rest接口返回HTTP 405错误 method-not-allowed 是什么原因？
+</h3>
+<p>
+  该错误表明调用了不存在的Rest接口，请检查Rest接口路径是否准确。由于Nginx的设置，请求路径(Path)是大小写敏感的，请严格按照文档声明的大小写。
+</p>
+<h1 id="152d3db758">联系我们</h1>
+<h2 id="6ac6895b3f">做市商项目</h2>
+<p>
+  欢迎有优秀 maker
+  策略且交易量大的用户参与长期做市商项目。如果您的火币现货账户或者合约账户中有折合大于10BTC资产（币币和合约账户分开统计），请提供以下信息发送邮件至：
+</p>
+
+<ul>
+  <li>
+    <a href="mailto:MM_service@huobi.com">MM_service@huobi.com</a> Huobi Global（现货 /
+    杠杆）做市商申请；
+  </li>
+  <li><a href="mailto:dm_mm@huobi.com">dm_mm@huobi.com</a> HBDM（合约）做市商申请。</li>
+</ul>
+
+<ol>
+  <li>提供 UID （需不存在返佣关系的 UID）；</li>
+  <li>提供其他交易平台 maker 交易量截图证明（比如30天内成交量，或者 VIP 等级等）；</li>
+  <li>请简要阐述做市方法，不需要细节。</li>
+</ol>
+
+<aside class="notice">做市商项目不支持点卡抵扣、VIP、交易量相关活动以及任何形式的返佣活动。</aside>
+<h2 id="f988263e8c">技术支持</h2>
+<p>使用过程中如有问题或者建议，您可选择以下任一方式联系我们：</p>
+
+<ul>
+  <li>加入官方QQ群（Huobi Global Spot API交流群 1160839820），入群申请请注明UID和编程语言。</li>
+  <li>通过官网的“帮助中心”或者发送邮件至support@huobigroup.com联系客服。</li>
+</ul>
+
+<p>如您遇到API错误，请按照如下模板向我们反馈问题。</p>
+
+<p>
+  <code>1. 问题描述</code><br />
+  <code>2. 问题发生的用户Id(UID)，账户Id和订单Id(如果和账户、订单有关系)</code><br />
+  <code>3. 完整的URL请求</code><br />
+  <code>4. 完整的JSON格式的请求参数（如果有）</code><br />
+  <code>5. 完整的JSON格式的返回结果</code><br />
+  <code>6. 问题出现时间和频率（如何时开始出现，是否可以重现）</code><br />
+  <code>7. 签名前字符串（如果是签名认证错误）</code>
+</p>
+
+<p>下方是一个应用了模版的例子：</p>
+
+<p>
+  <code>1. 问题简要说明：签名错误</code><br />
+  <code>2. UID：123456</code><br />
+  <code
+    >3. 完整的URL请求：GET
+    https://api.huobi.pro/v1/account/accounts?&amp;SignatureVersion=2&amp;SignatureMethod=HmacSHA256&amp;Timestamp=2019-11-06T03%3A25%3A39&amp;AccessKeyId=rfhxxxxx-950000847-boooooo3-432c0&amp;Signature=HhJwApXKpaLPewiYLczwfLkoTPnFPHgyF61iq0iTFF8%3D</code
+  ><br />
+  <code>4. 完整的JSON格式的参数：无</code><br />
+  <code
+    >5.
+    完整的JSON格式的返回：{"status":"error","err-code":"api-signature-not-valid","err-msg":"Signature
+    not valid: Incorrect Access key [Access key错误]","data":null}</code
+  ><br />
+  <code>6. 问题出现频率：每次都会出现</code><br />
+  <code>7. 签名前字符串</code><br />
+  <code>GET\n</code><br />
+  <code>api.huobi.pro\n</code><br />
+  <code>/v1/account/accounts\n</code><br />
+  <code
+    >AccessKeyId=rfhxxxxx-950000847-boooooo3-432c0&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2019-11-06T03%3A26%3A13</code
+  >
+</p>
+
+<p>
+  注意：Access Key仅能证明您的身份，不会影响您账户的安全。切记<strong>不</strong>要将Secret
+  Key信息分享给任何人，若您不小心将Secret Key暴露，请尽快<a href="https://www.hbg.com/zh-cn/apikey/"
+    >删除</a
+  >其对应的API Key，以免造成您的账户损失。
+</p>
+<h1 id="41654e0268">基础信息</h1>
+<h2 id="5ea2e0cde2-2">简介</h2>
+<p>
+  基础信息Rest接口提供了系统状态、市场状态、交易对信息、币种信息、币链信息、服务器时间戳等公共参考信息。
+</p>

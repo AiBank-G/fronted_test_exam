@@ -1,0 +1,145 @@
+{
+  "spot": [
+    {
+      "label": "update_logs",
+      "texts": {
+        "en-us": "Change Log",
+        "zh-cn": "更新日志"
+      }
+    },
+    {
+      "label": "intro",
+      "texts": {
+        "en-us": "Introduction",
+        "zh-cn": "简介"
+      }
+    },
+    {
+      "label": "quickStart",
+      "texts": {
+        "en-us": "Quick Start",
+        "zh-cn": "快速入门"
+      },
+      "children": [
+        {
+          "label": "preparation",
+          "texts": {
+            "en-us": "Preparation",
+            "zh-cn": "接入准备"
+          }
+        },
+        {
+          "label": "sdk_and_demo",
+          "texts": {
+            "en-us": "SDK and Demo",
+            "zh-cn": "SDK与代码示例"
+          }
+        },
+        {
+          "label": "testnet_stopped",
+          "texts": {
+            "en-us": "Testnet (Stopped)",
+            "zh-cn": "测试环境(已停止)"
+          }
+        },
+        {
+          "label": "interface_type",
+          "texts": {
+            "en-us": "Interface Type",
+            "zh-cn": "接口类型"
+          }
+        },
+        {
+          "label": "urls",
+          "texts": {
+            "en-us": "Access URLs",
+            "zh-cn": "接入URLs"
+          }
+        },
+        {
+          "label": "auth",
+          "texts": {
+            "en-us": "Authentication",
+            "zh-cn": "签名认证"
+          }
+        },
+        {
+          "label": "subuser",
+          "texts": {
+            "en-us": "Sub User",
+            "zh-cn": "子用户"
+          }
+        },
+        {
+          "label": "glossary",
+          "texts": {
+            "en-us": "Glossary",
+            "zh-cn": "业务字典"
+          }
+        }
+      ]
+    },
+    {
+      "label": "instruction",
+      "texts": {
+        "en-us": "API Access",
+        "zh-cn": "接入说明"
+      },
+      "children": [
+        {
+          "label": "overview",
+          "texts": {
+            "en-us": "Overview",
+            "zh-cn": "接口概览"
+          }
+        },
+        {
+          "label": "ratelimit_new",
+          "texts": {
+            "en-us": "New Version Rate limit Rule",
+            "zh-cn": "新限频规则"
+          }
+        },
+        {
+          "label": "ratelimit",
+          "texts": {
+            "en-us": "Rate Limiting Rule",
+            "zh-cn": "限频规则"
+          }
+        },
+        {
+          "label": "request_formula",
+          "texts": {
+            "en-us": "Request Format",
+            "zh-cn": "请求格式"
+          }
+        },
+        {
+          "label": "response_formula",
+          "texts": {
+            "en-us": "Response Format",
+            "zh-cn": "返回格式"
+          }
+        },
+        {
+          "label": "datatype",
+          "texts": {
+            "en-us": "Data Type",
+            "zh-cn": "数据类型"
+          }
+        },
+        {
+          "label": "best_practices",
+          "texts": {
+            "en-us": "Best Practices",
+            "zh-cn": "最佳实践"
+          }
+        }
+      ]
+    }
+  ],
+  "futures": [],
+  "coinMarginedSwap": [],
+  "usdtMarginedSwap": [],
+  "option": []
+}

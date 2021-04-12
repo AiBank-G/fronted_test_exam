@@ -1,0 +1,45 @@
+{
+  "items": [
+    {
+      "label": "spot",
+      "texts": {
+        "en-us": "Spot",
+        "zh-cn": "现货"
+      }
+    },
+    {
+      "label": "futures",
+      "texts": {
+        "en-us": "Futures",
+        "zh-cn": "交割合约"
+      }
+    },
+    {
+      "label": "coinMarginedSwap",
+      "texts": {
+        "en-us": "Coin Margined Swap",
+        "zh-cn": "币本位永续合约"
+      }
+    },
+    {
+      "label": "usdtMarginedSwap",
+      "texts": {
+        "en-us": "USDT Margined Swap",
+        "zh-cn": "USDT本位永续合约"
+      }
+    },
+    {
+      "label": "option",
+      "texts": {
+        "en-us": "Option",
+        "zh-cn": "期权合约"
+      }
+    }
+  ],
+  "langBtn": {
+    "texts": {
+      "en-us": "中文",
+      "zh-cn": "English"
+    }
+  }
+}
